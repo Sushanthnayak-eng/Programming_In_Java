@@ -10,9 +10,22 @@ class Node{
 }
 
 class LinkedList{
+   int count=0;
     Node head;
 
+    void insertatstart(int d){
+        count++;
+        Node newNode=new Node(d);
+        if(head==null){
+            head=newNode;
+        }else{
+            newNode.next=head;
+            head=newNode;
+        }
+    }
+
     void insertatend(int d){
+        count++;
         Node newNode=new Node(d);
         if(head==null){
             head=newNode;
@@ -23,6 +36,32 @@ class LinkedList{
             temp=temp.next;
         }
         temp.next=newNode;
+    }
+
+    void deleteNodeathefront(){
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        head=head.next;
+        count--;
+    }
+
+    void deleteNodeatheend(){
+        if (head == null || head.next == null) {
+            head = null;
+            return;
+        }
+        Node temp=head;
+        while(temp.next.next!=null){
+            temp=temp.next;
+        }
+        temp.next=null;
+        count--;
+    }
+
+    int countnum(){
+        return count;
     }
 
     void print(){
